@@ -1,0 +1,35 @@
+<p>country-covid works!</p>
+
+<button class='btn btn-primary' (click) = "covidAppServices.goWorld()">World Data</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Country Code</th>
+            <th>Slug</th>
+            <th>New Confirmed</th>
+            <th>Total Confirmed</th>
+            <th>New Deaths</th>
+            <th>Total Deaths</th>
+            <th>New Recovered</th>
+            <th>Total Recovered</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let countrydata of countryData">
+            <td>{{countrydata.Country}}</td>
+            <td>{{countrydata.CountryCode}}</td>
+            <td>{{countrydata.Slug}}</td>
+            <td>{{countrydata.NewConfirmed}}</td>
+            <td>{{countrydata.TotalConfirmed}}</td>
+            <td>{{countrydata.NewDeaths}}</td>
+            <td>{{countrydata.TotalDeaths}}</td>
+            <td>{{countrydata.NewRecovered}}</td>
+            <td>{{countrydata.TotalRecovered}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
