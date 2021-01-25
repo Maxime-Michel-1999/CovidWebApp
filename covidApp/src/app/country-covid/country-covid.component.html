@@ -1,35 +1,156 @@
-<p>country-covid works!</p>
 
-<button class='btn btn-primary' (click) = "covidAppServices.goWorld()">World Data</button>
+<div id ="header">
+<h2 >Choose your country</h2>
+<form>
+    <input id = "CountryName" list='Countries'>
+    <datalist id="Countries" placeholder="Country">
+    
+    </datalist>
+</form>
+<button id="check" class="btn btn-success" (click)="this.gettingCloud()">Check Data</button>
 
-<table>
-    <thead>
-        <tr>
-            <th>Country</th>
-            <th>Country Code</th>
-            <th>Slug</th>
-            <th>New Confirmed</th>
-            <th>Total Confirmed</th>
-            <th>New Deaths</th>
-            <th>Total Deaths</th>
-            <th>New Recovered</th>
-            <th>Total Recovered</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let countrydata of countryData">
-            <td>{{countrydata.Country}}</td>
-            <td>{{countrydata.CountryCode}}</td>
-            <td>{{countrydata.Slug}}</td>
-            <td>{{countrydata.NewConfirmed}}</td>
-            <td>{{countrydata.TotalConfirmed}}</td>
-            <td>{{countrydata.NewDeaths}}</td>
-            <td>{{countrydata.TotalDeaths}}</td>
-            <td>{{countrydata.NewRecovered}}</td>
-            <td>{{countrydata.TotalRecovered}}</td>
-        </tr>
-    </tbody>
-</table>
+</div>
+<div id = "News" *ngIf="loadInfo">
+    <h4 id = 'NewTitle'>This is the News for {{country.Country}} !</h4>
+    <div class="card-group" id ="cards">
+
+
+    </div>
+</div>
+
+<div id ="data" *ngIf="loadInfo">
+    <h2 style="Color: blue; text-align: center;">*Live Update Covid-19 - {{country.Country}}*</h2>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>New Confirmed</th>
+                <th>Total Confirmed</th>
+                <th>Active</th>
+                <th>New Recovered</th>
+                <th>Total Recovered</th>
+                <th>Recovery Rate</th>
+                <th>New Deaths</th>
+                <th>Total Deaths</th>
+                <th>Mortality</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{country.NewConfirmed}}</td>
+                <td>{{country.TotalConfirmed}}</td>
+                <td>{{Active}}</td>
+                <td>{{country.NewRecovered}}</td>
+                <td>{{country.TotalRecovered}}</td>
+                <td>{{Recovery}} %</td>
+                <td>{{country.NewDeaths}}</td>
+                <td>{{country.TotalDeaths}}</td>
+                <td>{{Mortality}} %</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="Pie" *ngIf="loadInfo">
+    <h2 style="Color: blue; text-align: center;">*Covid-19 Cases Distribution {{country.Country}}*</h2>
+    <canvas baseChart id="canvaPie"
+      [data]="pieChartData" 
+      [labels]="pieChartLabels" 
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+
+
+<div style="display: block;" id="Bar" *ngIf="loadBar">
+    <h2 style="Color: blue; text-align: center;">*Last Week Repartition {{country.Country}}*</h2>
+        <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      
+      
+</div>
+
+<div style="display: block;" id="Graph" *ngIf="loadGraph">
+    <h2 style="Color: blue; text-align: center;">*Last Month Repartition {{country.Country}}*</h2>
+    <canvas baseChart 
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins">
+    </canvas>
+  </div>
+
+
+<style>
+    #Pie{
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #data{
+        margin-top:10%;
+        display: block;
+
+    }
+
+    #Bar{
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #Graph{
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #header{
+        margin-top : 4%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    #check{
+        margin-top:1%;
+    }
+
+    #News{
+        margin-top : 5%;
+        border-style:dashed;
+        border-color: red;
+        text-align : center;
+    }
+
+    #NewTitle{
+        margin-top : 1%;
+    }
+
+    
+
+
+</style>
 
 
 

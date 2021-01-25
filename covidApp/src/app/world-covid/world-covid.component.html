@@ -1,30 +1,134 @@
-<h3>{{ user.displayName }} </h3>
+
+<div id = "News" *ngIf="loadInfo">
+    <h4 id = 'NewTitle'>This is the News !</h4>
+    <div class="card-group" id ="cards">
 
 
-<button class='btn btn-danger' (click) = "covidAppServices.signOut()">Sign out</button>
+    </div>
+</div>
 
-<button class='btn btn-primary' (click) = "covidAppServices.goCountry()">Country Data</button>
 
-<table>
-    <thead>
-        <tr>
-            <th>New Confirmed</th>
-            <th>Total Confirmed</th>
-            <th>New Deaths</th>
-            <th>Total Deaths</th>
-            <th>New Recovered</th>
-            <th>Total Recovered</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-            <td>{{covidData.NewConfirmed}}</td>
-            <td>{{covidData.TotalConfirmed}}</td>
-            <td>{{covidData.NewDeaths}}</td>
-            <td>{{covidData.TotalDeaths}}</td>
-            <td>{{covidData.NewRecovered}}</td>
-            <td>{{covidData.TotalRecovered}}</td>
+<div id ="data" *ngIf="loadInfo">
+    <h2 style="Color: blue; text-align: center;">*Live Update Covid-19 - World*</h2>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>New Cases</th>
+                <th>Total Cases</th>
+                <th>Active Cases</th>
+                <th>New Recovered</th>
+                <th>Total Recovered</th>
+                <th>Recovery Rate</th>
+                <th>New Deaths</th>
+                <th>Total Deaths</th>
+                <th>Mortality Rate</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+                <td>{{covidData.NewConfirmed}}</td>
+                <td>{{covidData.TotalConfirmed}}</td>
+                <td>{{Active}}</td>
+                <td>{{covidData.NewRecovered}}</td>
+                <td>{{covidData.TotalRecovered}}</td>
+                <td>{{Recovery}} %</td>
+                <td>{{covidData.NewDeaths}}</td>
+                <td>{{covidData.TotalDeaths}}</td>
+                <td>{{Mortality}} %</td>
+                
 
-        
-    </tbody>
-</table>
+            
+        </tbody>
+    </table>
+</div>
+
+<div id="Pie" *ngIf="loadInfo">
+    <h2 style="Color: blue; text-align: center;">*Cases Distribution World*</h2>
+    <canvas baseChart id="canvaPie"
+      [data]="pieChartData" 
+      [labels]="pieChartLabels" 
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+
+
+<div style="display: block;" id="Bar">
+    <h2 style="Color: blue; text-align: center;">*Last Week Repartition*</h2>
+        <canvas baseChart 
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      
+      
+</div>
+
+<div style="display: block;" id="Graph" *ngIf="loadChart">
+    <h2 style="Color: blue; text-align: center;">*Total Repartition World*</h2>
+    <canvas baseChart 
+      [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [options]="lineChartOptions"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="lineChartType"
+      [plugins]="lineChartPlugins">
+    </canvas>
+  </div>
+
+
+
+<style>
+    #Pie{
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #data{
+        margin-top:10%;
+        display: block;
+
+    }
+
+    #Bar{
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #Graph{
+        width: 90%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:5%
+
+    }
+
+    #News{
+        margin-top : 5%;
+        border-style:dashed;
+        border-color: red;
+        text-align : center;
+    }
+
+    #NewTitle{
+        margin-top : 1%;
+    }
+
+
+</style>

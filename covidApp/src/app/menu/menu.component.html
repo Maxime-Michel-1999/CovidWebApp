@@ -1,0 +1,54 @@
+
+
+
+<div class="btn-group btn-group-toggle" data-toggle="buttons" id ="buttons">
+    <label class="btn btn-secondary active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked  (click) = "covidAppServices.signOut()"> Sign out
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option2" autocomplete="off" (click)="this.loadWorld();"> See World Data
+    </label>
+    <label class="btn btn-secondary">
+      <input type="radio" name="options" id="option3" autocomplete="off" (click)="this.loadCountry();"> See Country Data
+    </label>
+  </div>
+
+
+<app-world-covid *ngIf="loadComponentWorld"></app-world-covid>
+<app-country-covid *ngIf="loadComponentCountry"></app-country-covid>
+
+<div>
+<h3 style="text-align: center; margin-top:2%">You can be part of our project by adding News ! </h3>
+
+<div id ="formBox">
+    <form style ="margin:2%; ">
+        <div class="form-group">
+            <label for="Country">Select Country (World Included) : </label>
+            <input style = "margin-left: 1%;" type = "text" id ="Country">
+        </div>
+        <div class="form-group">
+            <label for="descriptionForm">Enter Your News</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        
+    </form>
+    <button class = "btn btn-secondary btn-lg btn-block" (click)="this.addNews();">Enter the News</button>
+</div>
+
+
+
+
+</div>
+
+<style>
+    #buttons{
+        width: 100%;
+
+    }
+
+    #formBox{
+        border-style:dashed;
+        border-color: grey;
+
+    }
+</style>

@@ -8,6 +8,8 @@ export class WorldData {
     NewRecovered : number;
     TotalRecovered : number;
     Global: WorldData;
+    Date : string;
+
     
 
     constructor(
@@ -16,7 +18,8 @@ export class WorldData {
         newDeaths : number,
         totalDeaths : number,
         newRecovered : number,
-        totalRecovered : number
+        totalRecovered : number,
+        date : string
     ){
         this.NewConfirmed = newConfirmed;
         this.TotalConfirmed = totalConfirmed;
@@ -24,6 +27,8 @@ export class WorldData {
         this.TotalDeaths = totalDeaths;
         this.NewRecovered = newRecovered;
         this.TotalRecovered = totalRecovered;
+        this.Date = date;
+        
 
 
     }
