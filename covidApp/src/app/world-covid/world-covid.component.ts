@@ -142,13 +142,13 @@ export class WorldCovidComponent implements OnInit {
 
 
   updateWorldInfo(){
-    this.covidAppServices.getWorldInfo().subscribe(data => {this.oldcovidData = data;})
+    this.covidAppServices.getWorldInfo().subscribe(data => {this.oldcovidData = data;
     this.covidAppServices.getWorldHistoricalInfo("week").subscribe(data => {this.oldweekcovidData = data;})
     this.covidAppServices.getWorldHistoricalInfo("all").subscribe(data => {this.oldallcovidData = data;})
-    
-    if(this.oldcovidData == undefined || this.gettingDate() > this.oldcovidData.Date) {
 
-      this.covidData.Date = this.gettingDate()
+    if(this.oldcovidData == undefined || this.gettingDate() > this.oldcovidData.Date) {
+      
+      this.covidData.Date = this.gettingDate();
       this.oldcovidData = this.covidData; 
       this.covidAppServices.updateWorldInfo(this.oldcovidData);
 
@@ -168,6 +168,7 @@ export class WorldCovidComponent implements OnInit {
     this.makingMonthGraph();
     
     this.loadInfo = "Ok";
+  });
   }
 
   makingWeekGraph(){
@@ -224,7 +225,10 @@ export class WorldCovidComponent implements OnInit {
         '<p class="card-text">' + this.News[i].Description + '</p>'+
         '<p class="card-text"><small class="text-muted"> Made the ' + this.News[i].Date + '</small></p> </div> </div>'
     }
-    document.querySelector('#cards').innerHTML = news;
+    try{document.querySelector('#cards').innerHTML = news;}
+    catch(e){}
+
+    
 
   }
 

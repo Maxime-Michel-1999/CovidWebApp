@@ -8,9 +8,19 @@ import { CovidAppServices } from '../covid-app.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(public covidAppService : CovidAppServices) { }
+  loadWorldComponent: string;
+
+  constructor(public covidAppService : CovidAppServices) { 
+    this.loadWorldComponent = "";
+  }
 
   ngOnInit(): void {
+  }
+
+  loadWorld() {
+    
+    this.loadWorldComponent = "ok";
+    
   }
 
 }

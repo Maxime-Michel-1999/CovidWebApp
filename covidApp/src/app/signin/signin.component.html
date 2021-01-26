@@ -1,5 +1,22 @@
  
- <h1>Welcome to the CovidApp</h1>
- <p>Here you'll have access to all the data about the evolution of covid worldwide and for each particular country</p>
- <p>Presentation in progress Hello</p>
- <button class="btn btn-info" (click)="covidAppService.signInWithGoogle()">Sign In with Google</button>
+ <div  style="text-align: center;">
+    <h1>Welcome to the CovidApp</h1>
+    <p>Here you'll have access to all the data about the evolution of covid worldwide and for each particular country</p>
+    <p>If you want to add news or access to each country data you'll have to register !</p>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons" id ="buttons">  
+        <label class="btn btn-secondary active">
+          <input type="radio" name="options" id="option1" autocomplete="off" (click)="covidAppService.signInWithGoogle()"> Sign In with Google
+        </label>
+        <label class="btn btn-secondary">
+          <input type="radio" name="options" id="option2" autocomplete="off" (click)="this.loadWorld();"> See World Data
+        </label>
+</div>
+
+<app-world-covid *ngIf="loadWorldComponent"></app-world-covid>
+
+
+<style>
+    #buttons{
+        width: 60%;
+    }
+</style>

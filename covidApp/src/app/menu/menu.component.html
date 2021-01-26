@@ -1,9 +1,11 @@
 
+ <label class="btn btn-secondary active" >
+  <input type="radio" name="options" id="option1" autocomplete="off" checked  (click) = "covidAppServices.signOut()"> Sign out
+</label>
 
-
-<div class="btn-group btn-group-toggle" data-toggle="buttons" id ="buttons">
+<div class="btn-group btn-group-toggle" data-toggle="buttons" id ="buttons">  
     <label class="btn btn-secondary active">
-      <input type="radio" name="options" id="option1" autocomplete="off" checked  (click) = "covidAppServices.signOut()"> Sign out
+      <input type="radio" name="options" id="option1" autocomplete="off" (click)="this.Menu();"> Menu
     </label>
     <label class="btn btn-secondary">
       <input type="radio" name="options" id="option2" autocomplete="off" (click)="this.loadWorld();"> See World Data
@@ -17,7 +19,7 @@
 <app-world-covid *ngIf="loadComponentWorld"></app-world-covid>
 <app-country-covid *ngIf="loadComponentCountry"></app-country-covid>
 
-<div>
+<div *ngIf ="loadNews">
 <h3 style="text-align: center; margin-top:2%">You can be part of our project by adding News ! </h3>
 
 <div id ="formBox">

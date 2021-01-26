@@ -14,11 +14,13 @@ export class MenuComponent implements OnInit {
   user: User;
   loadComponentWorld: string;
   loadComponentCountry : string;
+  loadNews : string;
 
 
   constructor(public covidAppServices : CovidAppServices) {
     this.loadComponentWorld = "";
     this.loadComponentCountry = "";
+    this.loadNews = "ok";
 
     
    }
@@ -43,11 +45,13 @@ export class MenuComponent implements OnInit {
   loadWorld() {
     this.loadComponentCountry = "";
     this.loadComponentWorld = "ok";
+    this.loadNews = "";
   }
 
   loadCountry() {
     this.loadComponentWorld = "";
     this.loadComponentCountry = "ok";
+    this.loadNews = "";
   }
 
   addNews(){
@@ -58,4 +62,9 @@ export class MenuComponent implements OnInit {
     (<HTMLInputElement><unknown>document.getElementById('Country')).value = "";
   }
 
+  Menu(){
+    this.loadComponentWorld = "";
+    this.loadComponentCountry = "";
+    this.loadNews = "ok";
+  }
 }
